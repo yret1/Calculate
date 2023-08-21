@@ -1,24 +1,63 @@
 
-function calculate(){
-    const number1 = parseInt(prompt("Enter first number!"));
-    const opperand = prompt("Enter +,-,/-?");
-    const number2 = parseInt(prompt("Enter second number"))
-    let result;
 
+function clear(){
+    this.currentOpperandTextElement = "";
+    this.previousOpperandTextElement = "";
+    this.operation = ""
 
-    if(opperand =="+"){
-        result = number1 + number2
-    }else if(opperand == "-"){
-        result = number1- number2
-    }else if(opperand == "*"){
-        result = number1 * number2
-    }else if(opperand == "/"){
-        result = number1 / number2
-    }
+};
 
-    window.alert(result)
+function del(){
+
+}
+
+function appendNumber(number){
+
+};
+
+function chooseOperation(operation){
+
+}
+
+function compute(){
+
+}
+
+function updateDisplay(){
+
 }
 
 
+class Calculator{
+    constructor(previousOpperandTextElement, currentOpperandTextElement){
+        this.previousOpperandTextElement = previousOpperandTextElement
+        this.currentOpperandTextElement =currentOpperandTextElement
+        clear()
+        appendNumber()
+    }
+};
 
-calculate()
+
+const numberButtons = document.querySelectorAll(`[data-number]`)
+const operationButtons = document.querySelectorAll(`[data-operation]`)
+const equalsbutton = document.querySelector(`[data-equal]`)
+const deletbutton = document.querySelector(`[data-delete]`)
+const allClearbutton = document.querySelector(`[data-allClear]`)
+const previousOpperandTextElement = document.querySelector(`[data-previous-opp]`)
+const currentOpperandTextElement = document.querySelector(`[data-current-opp]`)
+
+
+const calculator = new Calculator(previousOpperandTextElement, currentOpperandTextElement)
+
+numberButtons.forEach(button => {
+    button.addEventListener(`click`, () =>{
+        calculator.appendNumber(button.innerHTML)
+        calculator.updateDisplay()
+    })
+})
+operationButtons.forEach(button => {
+    button.addEventListener(`click`, () =>{
+        calculator.chooseOperation(button.innerHTML)
+        calculator.updateDisplay()
+    })
+})
